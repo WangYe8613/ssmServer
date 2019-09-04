@@ -98,6 +98,8 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 数据源 -->
         <property name="dataSource" ref="dataSource"/>
+        <!-- *Mapper.xml这里标红是因为当前sqlmap文件夹下还没有写xml文件 -->
+        <!-- 如果想先将服务跑起来看看ssm框架是否配置成功，可以先将这行代码注释掉 -->
         <property name="mapperLocations" value="classpath:sqlmap/*Mapper.xml"/>
         <property name="typeAliasesPackage" value="com.springmvc.entity" />
 
