@@ -21,7 +21,7 @@
                 - spring（自己创建）
                     - applicationContext.xml（spring配置文件）
                 - sqlmap（存放实体与数据库的映射文件）
-                - generator.properties（mybatis的配置文件）
+                - generator.properties（mybatis的配置文件，可以用它结合mvn mybatis-generator:generate指令自动生成实体类）
                 - generator.xml（mybatis的配置文件）
                 - jdbc.properties（数据库相关信息）
                 - log4j.properties（日志配置文件）
