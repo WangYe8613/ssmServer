@@ -31,6 +31,7 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
+
   <!-- 将前端URL请求和后台处理方法controller建立对应关系-->
   <servlet-mapping>
     <servlet-name>springServlet</servlet-name>
@@ -53,6 +54,7 @@
     <param-name>contextConfigLocation</param-name>
     <param-value> classpath:spring/applicationContext.xml</param-value>
   </context-param>
+
   <!-- 欢迎页面-->
   <welcome-file-list>
     <welcome-file>/WEB-INF/views/index.jsp</welcome-file>
