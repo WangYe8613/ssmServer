@@ -18,12 +18,13 @@
     - #### IOC
     - #### AOP
     - #### log4j
-- ### 2.JavaWeb环境
+- ### 2.服务部署环境
     - #### Nginx（反向代理服务器，用于增加并发量）
     - #### Tomcat（JavaWeb服务运行环境）
     - #### JDK（链接JavaWe与MySQL）
     - #### MySQL（数据持久化）
-
+- ### 3.服务框架
+![如果图片显示失败，请检查路径](src/main/webapp/images/ssmServer-1.png) 
 # 三、版本递进说明
 ## 1.项目分支结构大体如下：
 - master
