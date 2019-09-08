@@ -1,11 +1,14 @@
-# ssmServer：版本1.0
-## 0.当前版本已完成的事
-- “ssm框架基本设置完成”，如何搭建按照2.文件结构解释
-## 1.读者必做事项：
+<h1 >ssmServer：版本1.0</h1>
+
+<h2 >0.当前版本已完成的事</h2>
+- “ssm框架基本设置完成”，如何搭建按照[2.文件结构解释](#2)
+
+<h2 >1.读者必做事项：</h2>
 - 按照当前分支所包含的所有文件以及文件内容配置ssm框架
 - 每个文件（基本都是配置文件）都有很全的注释说明，强烈建议把每个都看一遍，看懂！
 - 在终端cd到项目根目录下，使用mvn mybatis-generator:generate指令，看看会发生什么哟～
-## 2.文件结构解释
+
+<h2 id="2">2.文件结构解释</h2>
 - ssmServer（整个项目的文件夹,对应创建maven-webapp项目时填写的ArtifactId）
     - .idea（都是配置文件，主要跟maven有关，删除也无影响，只不过下次打开项目又会重新生成，重新配置一次）
     - src
@@ -41,7 +44,7 @@
 - External Libraries（所有依赖的包）
 - Scratches and Consoles（临时的文件编辑环境，这个功能是idea用来测试一小段代码的或者是某个语句某个api等，非常的方便，可以不管）
 
-## 3.SpringMVC框架图
+<h2>3.SpringMVC框架图</h2>
 ![如果图片显示失败，请检查图片路径是否正确](src/main/webapp/images/SpringMVC.png)
 > SpringMVC和MVC的区别是什么呢？
 >
@@ -54,5 +57,5 @@
 >
 >3.SpringMVC就是java语言实现的MVC，它使用Spring中的技术来完成MVC三层中的操作，比如Model层中对象的实例化就由Spring中的IOC依赖注入完成；或者使用AOP完成MVC中的事务控制等。
 
-## 4.项目框架图
+<h2>4.项目框架图</h2>
 ![如果图片显示失败，请检查图片路径是否正确](src/main/webapp/images/SpringMVC-1.png)
