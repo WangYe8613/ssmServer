@@ -122,21 +122,26 @@ sh /root/tomcat/bin/startup.sh
 ```bash
 #! /bin/bash
 
-#获取当前运行的tomcat的pid
-tomcat_pid=$(ps -ef | grep -v grep | grep tomcat |awk '{ print $2}')
-
-#判空
-if [ $tomcat_pid ]; then
-    kill -9 $tomcat_pid
-    echo $tomcat_pid
+#获取当前运行的tomcat的pids
+tomcat_pids=($(ps -ef | grep -v grep | grep tomcat |awk '{ print $2}'))
+if [[ ${#tomcat_pids[@]} > 0 ]]; then
+    echo "当前tomcat的pids如下："
+    for pid in ${tomcat_pids[*]}
+    do
+        echo $pid
+        kill -9 $pid
+    done
     echo "关闭当前tomcat，重新启动"
 fi
-
 #启动tomcat
-sh /usr/local/zstack/apache-tomcat/bin/startup.sh
+sh /root/tomcat/bin/startup.sh
 echo 'tomcat启动成功'
-tomcat_pid=$(ps -ef | grep -v grep | grep tomcat |awk '{ print $2}')
-
+echo "tomcat的pids如下："
+tomcat_pids=($(ps -ef | grep -v grep | grep tomcat |awk '{ print $2}'))
+for pid in ${tomcat_pids[*]}
+do
+    echo $pid
+done
 ```
 <h3 > 2.打印tomcat日志脚本 </h3>
 
