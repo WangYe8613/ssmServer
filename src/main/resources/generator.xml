@@ -6,7 +6,7 @@
     <properties resource="generator.properties"/>
 
     <!-- mysql-connector-java包路径根据自己电脑上路径更改 -->
-    <classPathEntry location="/Users/didi/work/apache-maven-3.6.1/repository/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar" />
+    <classPathEntry location="/Users/didi/work/apache-maven-3.6.1/repository/mysql/mysql-connector-java/8.0.11/mysql-connector-java-8.0.11.jar" />
 
     <context id="context1">
         <!-- 注释 -->
@@ -26,16 +26,23 @@
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="${modelPackage}"
-                            targetProject="${modelProject}" />
+        <!-- 生成的实体类.java文件存放路径 -->
+        <javaModelGenerator targetPackage="${modelPackage}" targetProject="${modelProject}" />
+        <!-- 生成的实体类Mapper.xml文件存放路径 -->
         <sqlMapGenerator targetPackage="${sqlPackage}" targetProject="${sqlProject}" />
-        <javaClientGenerator targetPackage="${mapperPackage}"
-                             targetProject="${mapperProject}" type="XMLMAPPER" />
+
+        <javaClientGenerator targetPackage="${mapperPackage}" targetProject="${mapperProject}" type="XMLMAPPER" />
 
         <!-- 如果需要通配所有表 直接用sql的通配符    %即可 -->
-        <table schema="" tableName="${table}" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table schema="" tableName="${table}"
+               domainObjectName="${table}"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+        <!-- tableName：resource对应的generator.properties配置文件中添加的所有表-->
+        <!-- domainObjectName：生成实体类后的表名，这里设置成${table}就是为了使实体类名和表名一样-->
 
     </context>
 </generatorConfiguration>
