@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lw.dao.UserEOMapper" >
+  <resultMap id="BaseResultMap" type="com.lw.model.entity.UserEO" >
+    <id column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+    <result column="lastOpDate" property="lastopdate" jdbcType="TIMESTAMP" />
+    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+    <!-- 该文件内的所有内容均是使用mvn mybatis-generator:generate指令后，由mybatis自动生成 -->
+  <sql id="Base_Column_List" >
+    uuid, name, password, token, lastOpDate, createDate, deleted, description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from UserEO
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </select>
+    <!-- 这行是根据功能需要添加的：根据name和password筛选 -->
+  <select id="selectByPrams" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from UserEO
+    <where>
+        <if test="name != null" >
+            name = #{name,jdbcType=VARCHAR},
+        </if>
+        <if test="password != null" >
+            and password = #{password,jdbcType=VARCHAR}
+        </if>
+    </where>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from UserEO
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lw.model.entity.UserEO" >
+    insert into UserEO (uuid, name, password, 
+      token, lastOpDate, createDate, 
+      deleted, description)
+    values (#{uuid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{lastopdate,jdbcType=TIMESTAMP}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lw.model.entity.UserEO" >
+    insert into UserEO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="lastopdate != null" >
+        lastOpDate,
+      </if>
+      <if test="createdate != null" >
+        createDate,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="lastopdate != null" >
+        #{lastopdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lw.model.entity.UserEO" >
+    update UserEO
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="lastopdate != null" >
+        lastOpDate = #{lastopdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdate != null" >
+        createDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lw.model.entity.UserEO" >
+    update UserEO
+    set name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      lastOpDate = #{lastopdate,jdbcType=TIMESTAMP},
+      createDate = #{createdate,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 根标签 -->
+<configuration>
+    <!-- 0.加载数据库配置文件，用于配置数据源 -->
+    <properties resource="jdbc.properties" />
+    <!-- 环境，可以配置多个，default：指定采用哪个环境 -->
+    <environments default="test">
+        <!-- id：唯一标识 -->
+        <environment id="test">
+            <!-- 事务管理器，JDBC类型的事务管理器 -->
+            <transactionManager type="JDBC" />
+            <!-- 1.配置数据源，类型为池类型 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}" />
+                <property name="url" value="${url}" />
+                <property name="username" value="${username}" />
+                <property name="password" value="${password}" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 2.将com/lw/dao文件夹下的Mapper.xml文件添加在这里 -->
+    <mappers>
+        <!-- 使用下面这代码的设置，就可以不用一个一个地添加xxxMapper.xml了 -->
+        <package name="com.lw.dao" />
+
+        <!-- 使用下面这方式也行，但是需要一个一个地添加xxxMapper.xml -->
+        <!-- <mapper resource="com/lw/dao/UserEOMapper.xml" />-->
+    </mappers>
+</configuration>
