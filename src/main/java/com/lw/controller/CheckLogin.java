@@ -69,6 +69,9 @@ public class CheckLogin {
         response.setCode(responseCode);
         response.setData(data);
         response.setMessage(message);
+
+        //关闭连接（实际上是将该连接放回连接池内）
+        sqlSession.close();
         return response;
     }
 }

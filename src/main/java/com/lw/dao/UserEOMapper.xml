@@ -28,7 +28,7 @@
     from UserEO
     <where>
         <if test="name != null" >
-            name = #{name,jdbcType=VARCHAR},
+            name = #{name,jdbcType=VARCHAR}
         </if>
         <if test="password != null" >
             and password = #{password,jdbcType=VARCHAR}
